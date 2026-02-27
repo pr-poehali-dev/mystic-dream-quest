@@ -4,27 +4,39 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Send } from "lucide-react"
+import { Send, CheckCircle2 } from "lucide-react"
 import Icon from "@/components/ui/icon"
 
-export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    nickname: "",
-    message: "",
-  })
+const SEND_CONTACT_URL = "https://functions.poehali.dev/5fb451cc-85bc-4848-8a29-59fd03105693"
 
-  const handleSubmit = (e: React.FormEvent) => {
+export function ContactSection() {
+  const [formData, setFormData] = useState({ name: "", email: "", nickname: "", message: "" })
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[MANASHKA] Form submitted:", formData)
+    setLoading(true)
+    setError("")
+    try {
+      const res = await fetch(SEND_CONTACT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+      setFormData({ name: "", email: "", nickname: "", message: "" })
+    } catch {
+      setError("Не удалось отправить. Попробуй ещё раз или напиши нам напрямую в Telegram.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
@@ -52,77 +64,62 @@ export function ContactSection() {
                 <CardTitle className="text-2xl">Написать нам</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {sent ? (
+                  <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                    <CheckCircle2 className="h-16 w-16 text-primary" />
+                    <h3 className="text-2xl font-bold">Сообщение отправлено!</h3>
+                    <p className="text-muted-foreground">Мы свяжемся с тобой в ближайшее время.</p>
+                    <Button variant="outline" onClick={() => setSent(false)}>Отправить ещё</Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="text-sm font-medium">Имя *</label>
+                        <Input
+                          id="name" name="name" value={formData.name} onChange={handleChange}
+                          placeholder="Ваше имя" required className="transition-all focus:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="nickname" className="text-sm font-medium">Ник в игре</label>
+                        <Input
+                          id="nickname" name="nickname" value={formData.nickname} onChange={handleChange}
+                          placeholder="Ваш игровой ник" className="transition-all focus:scale-[1.02]"
+                        />
+                      </div>
+                    </div>
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Имя *
-                      </label>
+                      <label htmlFor="email" className="text-sm font-medium">E-mail *</label>
                       <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Ваше имя"
-                        required
-                        className="transition-all focus:scale-[1.02]"
+                        id="email" name="email" type="email" value={formData.email} onChange={handleChange}
+                        placeholder="your@email.ru" required className="transition-all focus:scale-[1.02]"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="nickname" className="text-sm font-medium">
-                        Ник в игре
-                      </label>
-                      <Input
-                        id="nickname"
-                        name="nickname"
-                        value={formData.nickname}
-                        onChange={handleChange}
-                        placeholder="Ваш игровой ник"
-                        className="transition-all focus:scale-[1.02]"
+                      <label htmlFor="message" className="text-sm font-medium">Сообщение *</label>
+                      <Textarea
+                        id="message" name="message" value={formData.message} onChange={handleChange}
+                        placeholder="Расскажи о своём вопросе или предложении..."
+                        rows={6} required className="transition-all focus:scale-[1.02]"
                       />
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      E-mail *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your@email.ru"
-                      required
-                      className="transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Сообщение *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Расскажи о своём вопросе или предложении..."
-                      rows={6}
-                      required
-                      className="transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                  <Button type="submit" size="lg" className="w-full sm:w-auto group">
-                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Отправить
-                  </Button>
-                </form>
+                    {error && <p className="text-sm text-destructive">{error}</p>}
+                    <Button type="submit" size="lg" className="w-full sm:w-auto group" disabled={loading}>
+                      <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      {loading ? "Отправляем..." : "Отправить"}
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
           </div>
 
           <div className="space-y-6">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onClick={() => window.open('https://t.me/MANASHKA_CRMP', '_blank')}>
+            <Card
+              className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
+              onClick={() => window.open('https://t.me/MANASHKA_CRMP', '_blank')}
+            >
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
