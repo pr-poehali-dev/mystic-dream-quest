@@ -28,16 +28,16 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-8">
             <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
-              О нас
+              О сервере
             </a>
             <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">
-              Услуги
+              Возможности
             </a>
             <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">
-              Портфолио
+              Достижения
             </a>
             <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
-              Тарифы
+              Донат
             </a>
             <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
               Контакты

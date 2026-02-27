@@ -4,20 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Send } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    nickname: "",
     message: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
-    // Handle form submission
+    console.log("[MANASHKA] Form submitted:", formData)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,10 +38,10 @@ export function ContactSection() {
             Контакты
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Давайте <span className="text-primary">создавать вместе</span>
+            Вступай в <span className="text-primary">MANASHKA</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Готовы воплотить ваши цифровые амбиции? Свяжитесь с нами без обязательств и узнайте, чем мы можем помочь.
+            Есть вопросы по игре, донату или сотрудничеству? Напиши нам — ответим быстро.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export function ContactSection() {
           <div className="lg:col-span-2">
             <Card className="border-none shadow-xl bg-background">
               <CardHeader>
-                <CardTitle className="text-2xl">Напишите нам</CardTitle>
+                <CardTitle className="text-2xl">Написать нам</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -69,32 +69,31 @@ export function ContactSection() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        E-mail *
+                      <label htmlFor="nickname" className="text-sm font-medium">
+                        Ник в игре
                       </label>
                       <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
+                        id="nickname"
+                        name="nickname"
+                        value={formData.nickname}
                         onChange={handleChange}
-                        placeholder="your@email.ru"
-                        required
+                        placeholder="Ваш игровой ник"
                         className="transition-all focus:scale-[1.02]"
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium">
-                      Телефон
+                    <label htmlFor="email" className="text-sm font-medium">
+                      E-mail *
                     </label>
                     <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder="+7 900 123-45-67"
+                      placeholder="your@email.ru"
+                      required
                       className="transition-all focus:scale-[1.02]"
                     />
                   </div>
@@ -107,7 +106,7 @@ export function ContactSection() {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Расскажите о вашем проекте..."
+                      placeholder="Расскажи о своём вопросе или предложении..."
                       rows={6}
                       required
                       className="transition-all focus:scale-[1.02]"
@@ -127,11 +126,11 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Mail className="h-5 w-5" />
+                    <Icon name="MessageCircle" className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">E-mail</h3>
-                    <p className="text-sm text-muted-foreground">hello@example.com</p>
+                    <h3 className="font-semibold mb-1">Discord</h3>
+                    <p className="text-sm text-muted-foreground">discord.gg/manashka</p>
                   </div>
                 </div>
               </CardContent>
@@ -141,11 +140,11 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Phone className="h-5 w-5" />
+                    <Icon name="Send" className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Телефон</h3>
-                    <p className="text-sm text-muted-foreground">+7 900 123-45-67</p>
+                    <h3 className="font-semibold mb-1">Telegram</h3>
+                    <p className="text-sm text-muted-foreground">@manashkacrmp</p>
                   </div>
                 </div>
               </CardContent>
@@ -155,14 +154,14 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <MapPin className="h-5 w-5" />
+                    <Icon name="Clock" className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Время работы</h3>
+                    <h3 className="font-semibold mb-1">Поддержка</h3>
                     <p className="text-sm text-muted-foreground">
-                      Пн - Пт: 9:00 - 18:00
+                      Онлайн 24/7
                       <br />
-                      Выходные: по договоренности
+                      Ответ в течение часа
                     </p>
                   </div>
                 </div>

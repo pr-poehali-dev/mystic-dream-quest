@@ -2,19 +2,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle2, Sparkles } from "lucide-react"
 
 const values = [
-  { title: "Качество", description: "Высококлассные решения, соответствующие самым высоким стандартам" },
-  { title: "Доступность", description: "Профессиональные сайты по честным и прозрачным ценам" },
-  { title: "Прозрачность", description: "Четкая коммуникация без скрытых платежей" },
-  { title: "Клиентоориентированность", description: "Ваши цели и пожелания всегда в приоритете" },
-  { title: "Масштабируемость", description: "Сайты, которые растут вместе с вашим бизнесом" },
-  { title: "Гибкость", description: "Быстрая адаптация под меняющиеся потребности" },
+  { title: "Честная игра", description: "Строгая система античит и справедливые администраторы — читеры не выживают" },
+  { title: "Живая экономика", description: "Реальная экономическая система с бизнесом, торговлей и инвестициями" },
+  { title: "Активная команда", description: "Администрация на связи 24/7, баги исправляются в течение нескольких часов" },
+  { title: "Постоянные обновления", description: "Новый контент, механики и ивенты каждую неделю — скучать не придётся" },
+  { title: "Стремительный рост", description: "Онлайн растёт каждый день — мы уже в топе среди Radmir-серверов" },
+  { title: "Живое сообщество", description: "Активный Discord, турниры и клановые войны — здесь всегда что-то происходит" },
 ]
 
 const stats = [
-  { number: "50+", label: "Проектов" },
-  { number: "45+", label: "Довольных клиентов" },
-  { number: "30+", label: "Созданных логотипов" },
-  { number: "3+", label: "Года опыта" },
+  { number: "10 000+", label: "Игроков" },
+  { number: "1000+", label: "Онлайн" },
+  { number: "Топ-1", label: "Среди Radmir" },
+  { number: "24/7", label: "Поддержка" },
 ]
 
 export function AboutSection() {
@@ -27,19 +27,19 @@ export function AboutSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
             <Sparkles className="h-4 w-4" />
-            О CodeCraft
+            О MANASHKA CRMP
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Качество, которое{" "}
+            Сервер, который{" "}
             <span className="text-primary relative">
-              впечатляет
+              меняет игру
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                 <path d="M0 4C50 2 150 6 200 4" stroke="currentColor" strokeWidth="2" className="text-primary" />
               </svg>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Создание сайта не должно быть дорогим. Мы разрабатываем индивидуальные решения, которые идеально соответствуют пожеланиям каждого клиента.
+            MANASHKA CRMP — это не просто копия Radmir. Это переосмысление формата с уникальными механиками, сильной командой и сообществом, которое строит мир вместе с нами.
           </p>
         </div>
 
