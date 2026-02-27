@@ -49,31 +49,13 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Мы в соцсетях</h4>
             <div className="flex gap-4">
               <a
-                href="https://discord.gg/manashka"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Icon name="MessageCircle" className="h-5 w-5" />
-                <span className="sr-only">Discord</span>
-              </a>
-              <a
-                href="https://t.me/manashkacrmp"
+                href="https://t.me/MANASHKA_CRMP"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Icon name="Send" className="h-5 w-5" />
                 <span className="sr-only">Telegram</span>
-              </a>
-              <a
-                href="https://vk.com/manashkacrmp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Icon name="Users" className="h-5 w-5" />
-                <span className="sr-only">ВКонтакте</span>
               </a>
             </div>
           </div>

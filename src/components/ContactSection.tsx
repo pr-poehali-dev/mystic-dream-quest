@@ -122,21 +122,7 @@ export function ContactSection() {
           </div>
 
           <div className="space-y-6">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Icon name="MessageCircle" className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Discord</h3>
-                    <p className="text-sm text-muted-foreground">discord.gg/manashka</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onClick={() => window.open('https://t.me/MANASHKA_CRMP', '_blank')}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
@@ -144,7 +130,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Telegram</h3>
-                    <p className="text-sm text-muted-foreground">@manashkacrmp</p>
+                    <p className="text-sm text-muted-foreground">@MANASHKA_CRMP</p>
                   </div>
                 </div>
               </CardContent>

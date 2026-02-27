@@ -114,7 +114,7 @@ export function PricingSection() {
                   className={`w-full ${tier.highlighted ? "shadow-lg shadow-primary/20" : ""}`}
                   asChild
                 >
-                  <a href="#contact">
+                  <a href="https://t.me/MANASHKA_CRMP" target="_blank" rel="noopener noreferrer">
                     {tier.price === "По запросу" ? "Связаться с нами" : "Получить привилегию"}
                   </a>
                 </Button>
